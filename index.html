@@ -7,16 +7,22 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: hidden;
         }
-        iframe {
+        #pdfFrame {
             width: 100%;
-            height: 100%;
-            border: none; /* Remove iframe border */
+            height: 90%; /* Adjust height to accommodate download link */
+            border: none;
+        }
+        #downloadLink {
+            text-align: center;
+            padding: 10px;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <iframe src="NamanSharma.pdf"></iframe>
+    <iframe id="pdfFrame" src="NamanSharma.pdf"></iframe>
+    <a id="downloadLink" href="NamanSharma.pdf" download="My_CV.pdf">Download CV (PDF)</a>
 </body>
 </html>
