@@ -1,28 +1,635 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My CV</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naman Sharma - Resume</title>
     <style>
-        body, html {
+        body {
+            font-family: 'Arial', 'Calibri', sans-serif;
+            font-size: 10pt;
+            line-height: 1.1;
             margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
+            padding: 15px;
+            background-color: white;
+            color: #000000;
+            max-width: 8.5in;
+            margin: 0 auto;
         }
-        #pdfFrame {
-            width: 100%;
-            height: 90%; /* Adjust height to accommodate download link */
-            border: none;
+        
+        .container {
+            background: white;
         }
-        #downloadLink {
-            text-align: center;
-            padding: 10px;
+        
+        /* Enhanced page break control */
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .job-entry {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 10px;
+        }
+        
+        .sub-role {
+            break-after: avoid;
+            page-break-after: avoid;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .bullet-point {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Force page break for better distribution */
+        .page-break-before {
+            break-before: page;
+            page-break-before: always;
+        }
+        
+        /* Header Section - Full Width */
+        .header {
+            text-align: left;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 8px;
+        }
+        
+        .name {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #000000;
+        }
+        
+        .headline {
+            font-size: 10pt;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #000000;
+        }
+        
+        .contact-info {
+            font-size: 9pt;
+            margin-bottom: 8px;
+        }
+        
+        /* Links styling */
+        .contact-info a {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Professional Summary - Full Width */
+        .summary-section {
+            margin-bottom: 15px;
+        }
+        
+        .summary-content {
+            margin-bottom: 10px;
+            text-align: justify;
+            font-size: 10pt;
+        }
+        
+        /* Two Column Layout for Main Content */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .left-column {
+            flex: 1.4;
+        }
+        
+        .right-column {
+            flex: 1;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 10pt;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 1px;
+            text-transform: uppercase;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        /* First section title in each column */
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        /* Core Competencies */
+        .competencies-list {
+            margin-bottom: 15px;
+            font-size: 9pt;
+        }
+        
+        .competency-item {
+            margin-bottom: 2px;
+        }
+        
+        /* Experience Section */
+        .job-header {
+            margin-bottom: 3px;
+            margin-top: 6px;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .company {
+            font-weight: bold;
+            font-size: 10pt;
+        }
+        
+        .location {
+            font-style: italic;
+        }
+        
+        .job-title-line {
+            margin-bottom: 5px;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            font-size: 9pt;
+        }
+        
+        .job-dates {
+            font-weight: bold;
+        }
+        
+        .job-content {
+            margin-left: 0;
+            margin-bottom: 6px;
+        }
+        
+        .sub-role {
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 4px;
+            margin-bottom: 3px;
+            font-size: 9pt;
+            break-after: avoid;
+            page-break-after: avoid;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Bullet Points - Reduced margins for better fit */
+        .bullet-point {
+            margin-bottom: 2px;
+            text-align: justify;
             display: block;
+            margin-left: 12px;
+            text-indent: -12px;
+            font-size: 9pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .bullet-point:before {
+            content: "• ";
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        /* Skills Section */
+        .skills-content {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            font-size: 9pt;
+        }
+        
+        .skill-category {
+            margin-bottom: 5px;
+        }
+        
+        .skill-label {
+            font-weight: bold;
+        }
+        
+        /* Education Section */
+        .education-item {
+            margin-bottom: 8px;
+            font-size: 9pt;
+        }
+        
+        .institution {
+            font-weight: bold;
+        }
+        
+        .degree {
+            font-style: italic;
+        }
+        
+        /* Certifications */
+        .cert-item {
+            margin-bottom: 3px;
+            font-size: 9pt;
+        }
+        
+        .cert-link {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .cert-link:hover {
+            text-decoration: underline;
+        }
+        
+        .cert-link:after {
+            content: " 📎";
+            margin-left: 3px;
+        }
+        
+        /* Download Button - Hidden by default */
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Keyboard shortcut indicator */
+        .shortcut-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 11px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+
+        .shortcut-hint.show {
+            opacity: 1;
+        }
+
+        @media print {
+            .download-btn {
+                display: none !important;
+            }
+            
+            .shortcut-hint {
+                display: none !important;
+            }
+            
+            body {
+                padding: 0;
+                font-size: 9pt;
+                line-height: 1.05;
+            }
+            
+            .main-content {
+                gap: 15px;
+            }
+            
+            /* Enhanced print page break controls */
+            .job-entry {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+            }
+            
+            .sub-role {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+            
+            .bullet-point {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 1px;
+            }
+            
+            /* Specific break controls for better distribution */
+            .fiserv-earlier-roles {
+                break-before: page;
+                page-break-before: always;
+            }
+            
+            /* Print links styling */
+            .cert-link {
+                color: #000000;
+            }
         }
     </style>
 </head>
 <body>
-    <iframe id="pdfFrame" src="NamanSharma.pdf"></iframe>
-    <a id="downloadLink" href="NamanSharma.pdf" download="My_CV.pdf">Download CV (PDF)</a>
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+    <div class="shortcut-hint" id="shortcut-hint">Press Ctrl+D to show/hide download button</div>
+    
+    <div class="container">
+        <!-- Header Section - Full Width -->
+        <div class="header">
+            <div class="name">Naman Sharma</div>
+            <div class="headline">AI Solutions Architect</div>
+            <div class="contact-info">Gurugram, India | 7767924684 | naman.sharma89@gmail.com | <a href="https://www.linkedin.com/in/naman-sharma-7b4b3661/" target="_blank">LinkedIn</a></div>
+        </div>
+
+        <!-- Professional Summary - Full Width -->
+        <div class="summary-section">
+            <div class="section-title">Professional Summary</div>
+            <div class="summary-content">
+                Results-driven AI Solutions Architect with 12+ years of experience designing and implementing enterprise-grade software solutions. Proven expertise in AI integration, cloud architecture (AWS), and modern development frameworks including Spring Boot, React, and Node.js. AWS Certified AI Practitioner with extensive experience in LLM integration, microservices architecture, and DevSecOps practices. Demonstrated success in leading cross-functional teams, managing complex migrations, and delivering scalable solutions that drive business value.
+            </div>
+        </div>
+
+        <!-- Main Content - Two Columns -->
+        <div class="main-content">
+            <!-- Left Column - Professional Experience -->
+            <div class="left-column">
+                <div class="section-title">Professional Experience</div>
+                
+                <!-- Current Role -->
+                <div class="job-entry no-break">
+                    <div class="job-header">
+                        <span class="company">Technical Consultant</span> | <span class="location">Gurugram</span>
+                    </div>
+                    <div class="job-title-line">
+                        <span class="job-title">AI Solutions Architect</span><br>
+                        <span class="job-dates">November 2024 - Present</span>
+                    </div>
+                    
+                    <div class="job-content">
+                        <div class="bullet-point">Currently building a scalable user authentication system leveraging AWS Cognito Identity Provider with Spring Security OAuth2 Resource Server, implementing environment-specific credential management, dynamic configuration, and comprehensive error handling for seamless development-to-production workflows.</div>
+                        
+                        <div class="bullet-point">Developing enterprise-grade user registration platform with AWS Cognito integration, featuring automated lifecycle management, RBAC, and robust validation pipelines</div>
+                        
+                        <div class="bullet-point">Delivered end-to-end AI solutions for EdTech and industrial analytics clients, combining full-stack engineering with LLM-driven innovation</div>
+                        
+                        <div class="bullet-point">Built AI-powered quiz assistant with dynamic question generation and progressive hinting. Developed React frontend with glassmorphism UI and Node.js/Express microservices backend</div>
+                        
+                        <div class="bullet-point">Integrated model-agnostic LLM support (OpenAI, Anthropic, Ollama) via unified API layer for flexible local/cloud deployment while maintaining high performance and cost efficiency</div>
+                        
+                        <div class="bullet-point">Designed context-aware validation mechanisms preventing AI leakage, ensuring educational integrity and adaptive learning quality</div>
+                        
+                        <div class="bullet-point">Developed secure text-to-SQL engine translating natural language to optimized PostgreSQL using AWS Bedrock (Claude) and Ollama, achieving 95%+ accuracy</div>
+                        
+                        <div class="bullet-point">Engineered data pipelines processing 100K+ industrial records using Polars, with automated ETL, real-time sanitization, 99.9% validation accuracy, and full lineage tracking</div>
+                        
+                        <div class="bullet-point">Delivered DPDP-compliant FastAPI services with structured logging, automated migrations, reducing data analysis time by 90%</div>
+                        
+                        <div class="bullet-point">Architected scalable AWS infrastructure (S3, Aurora, Lambda, Redis) with CI/CD pipelines supporting 1000+ concurrent users and sub-500ms latencies</div>
+                    </div>
+                </div>
+
+                <!-- Fiserv Role - Tech Lead Responsibilities -->
+                <div class="job-entry no-break">
+                    <div class="job-header">
+                        <span class="company">Fiserv</span> | <span class="location">Gurugram & Pune</span>
+                    </div>
+                    <div class="job-title-line">
+                        <span class="job-title">Tech Lead</span><br>
+                        <span class="job-dates">October 2015 - November 2024</span>
+                    </div>
+                    
+                    <div class="job-content">
+                        <div class="sub-role">Career Progression: Application Developer → Tech Lead</div>
+                        
+                        <div class="sub-role">Tech Lead Responsibilities (2020–2024)</div>
+                        
+                        <div class="bullet-point">Architected adapter layer APIs using DDD and Hexagonal Architecture to integrate legacy systems with enterprise platform, enabling real-time fraud detection and reducing response times from 2+ weeks to real-time</div>
+                        
+                        <div class="bullet-point">Led Java platform migrations (JDK 8 to 17), improving system performance, scalability, and maintainability</div>
+                        
+                        <div class="bullet-point">Served as Security Champion, coordinating teams to address critical vulnerabilities like Log4j, reducing exposure time to under 24 hours</div>
+                        
+                        <div class="bullet-point">Engineered CI/CD pipelines with automated vulnerability tracking, reducing deployment times from days to hours and mitigating thousands of vulnerabilities</div>
+                        
+                        <div class="bullet-point">Spearheaded Oracle-to-PostgreSQL and AWS migrations, delivering substantial performance and reliability improvements</div>
+                        
+                        <div class="bullet-point">Championed Agile (SAFe) transformations, boosting team productivity by 32% while ensuring security standard adherence</div>
+                        
+                        <div class="bullet-point">Mentored engineering teams of 8-12 developers, driving daily stand-ups, code reviews, and best practices adoption</div>
+                    </div>
+                </div>
+
+                <!-- Earlier Developer Roles - Force to new page for better distribution -->
+                <div class="fiserv-earlier-roles">
+                    <div class="sub-role">Earlier Developer Roles (2015–2019)</div>
+                    
+                    <div class="bullet-point">Developed adapter modules for MasterCard/Visa API integrations with dynamic transformations and plug-in/out capabilities</div>
+                    
+                    <div class="bullet-point">Designed dual-DAO layers for seamless database transitions, dynamically selecting libraries at runtime</div>
+                    
+                    <div class="bullet-point">Improved application performance by 53%, reducing page load times from 3.2s to 1.5s and increasing user satisfaction by 47%</div>
+                    
+                    <div class="bullet-point">Embedded security in CI/CD through DevSecOps, integrating Fortify, WebInspect, and SonarQube scanning</div>
+                    
+                    <div class="bullet-point">Led security remediation initiative addressing 11,000+ vulnerabilities, achieving 98% reduction in critical/high issues and formal compliance certification</div>
+                </div>
+
+                <!-- Infosys Role -->
+                <div class="job-entry">
+                    <div class="job-header">
+                        <span class="company">Infosys Limited</span> | <span class="location">Pune</span>
+                    </div>
+                    <div class="job-title-line">
+                        <span class="job-title">Senior Systems Engineer</span><br>
+                        <span class="job-dates">August 2012 - October 2015</span>
+                    </div>
+                    
+                    <div class="job-content">
+                        <div class="sub-role">Progression: Systems Engineer → Senior Systems Engineer</div>
+                        
+                        <div class="bullet-point">Developed services for mainframe data integration using Spring Integration framework</div>
+                        
+                        <div class="bullet-point">Implemented reporting solutions using Apache Chemistry for real-time business intelligence</div>
+                        
+                        <div class="bullet-point">Created Spring Batch jobs for overnight ETL processing from Mainframe to database systems</div>
+                        
+                        <div class="bullet-point">Implemented quality tools (Checkstyle, PMD, SonarQube) establishing code quality standards</div>
+                        
+                        <div class="bullet-point">Designed POM structures and simplified workspace setup, reducing developer onboarding time</div>
+                        
+                        <div class="bullet-point">Maintained coding standards using Confluence and Jira, conducted peer reviews and integration testing</div>
+                        
+                        <div class="bullet-point">Managed delivery processes and UAT issue resolution ensuring successful project deployment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Skills, Certifications and Education -->
+            <div class="right-column">
+                <!-- Core Competencies -->
+                <div class="section-title">Core Competencies</div>
+                <div class="competencies-list">
+                    <div class="competency-item">• Artificial Intelligence (AI) & Machine Learning</div>
+                    <div class="competency-item">• Large Language Models (LLM) Integration</div>
+                    <div class="competency-item">• AWS Cloud Architecture & Services</div>
+                    <div class="competency-item">• Microservices Architecture Design</div>
+                    <div class="competency-item">• Java Enterprise Development</div>
+                    <div class="competency-item">• Spring Boot & Spring Security</div>
+                    <div class="competency-item">• React.js & Node.js Development</div>
+                    <div class="competency-item">• API Development & Integration</div>
+                    <div class="competency-item">• Database Management</div>
+                    <div class="competency-item">• DevSecOps & CI/CD Implementation</div>
+                    <div class="competency-item">• System Design & Team Leadership</div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="section-title">Technical Skills</div>
+                <div class="skills-content">
+                    <div class="skill-category">
+                        <span class="skill-label">Languages:</span> Java, Python, JavaScript, SQL, Shell
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Frameworks:</span> Spring Boot, React.js, Node.js, FastAPI, Express.js
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Cloud & DevOps:</span> AWS (Cognito, Lambda, S3, Bedrock), Docker, Terraform, GitLab, Jenkins
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Databases:</span> PostgreSQL, Oracle, Redis, Aurora
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">AI/ML:</span> OpenAI GPT, Anthropic Claude, Ollama, AWS SageMaker, NLP
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Security:</span> OAuth 2.0, IAM, DevSecOps, Fortify, SonarQube
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="section-title">Certifications</div>
+                <div class="skills-content">
+                    <div class="cert-item">• <a href="https://www.credly.com/badges/your-aws-ai-practitioner-badge" target="_blank" class="cert-link">AWS Certified AI Practitioner</a></div>
+                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/your-deeplearning-ai-llm-certificate" target="_blank" class="cert-link">DeepLearning.AI Generative AI with Large Language Models</a></div>
+                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/your-deeplearning-ai-software-dev-certificate" target="_blank" class="cert-link">DeepLearning.AI Generative AI for Software Development</a></div>
+                </div>
+
+                <!-- Education -->
+                <div class="section-title">Education</div>
+                <div class="education-item">
+                    <span class="institution">Chitkara University</span> | <span class="location">Baddi, Himachal Pradesh</span><br>
+                    <span class="degree">Bachelor of Engineering (B.E.) in Computer Science</span><br>
+                    <span class="job-dates">August 2012</span>
+                </div>
+                <div class="education-item">
+                    <span class="institution">IMT Ghaziabad</span> | <span class="location">Ghaziabad</span><br>
+                    <span class="degree">Executive Program in Business Management</span><br>
+                    <span class="job-dates">July 2021</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.js/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+    let isButtonVisible = false;
+    
+    // Keyboard event listener
+    document.addEventListener('keydown', function(event) {
+        // Check for Ctrl+D (or Cmd+D on Mac)
+        if ((event.ctrlKey || event.metaKey) && event.key === 'd') {
+            event.preventDefault(); // Prevent default browser bookmark action
+            toggleDownloadButton();
+        }
+        
+        // Alternative: Press 'P' key for PDF
+        if (event.key === 'p' || event.key === 'P') {
+            if (!event.ctrlKey && !event.metaKey) { // Don't interfere with Ctrl+P print
+                event.preventDefault();
+                toggleDownloadButton();
+            }
+        }
+    });
+    
+    function toggleDownloadButton() {
+        const btn = document.querySelector('.download-btn');
+        const hint = document.getElementById('shortcut-hint');
+        
+        isButtonVisible = !isButtonVisible;
+        
+        if (isButtonVisible) {
+            btn.classList.add('visible');
+            hint.classList.remove('show');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }
+    
+    // Show hint on page load
+    window.addEventListener('load', function() {
+        const hint = document.getElementById('shortcut-hint');
+        setTimeout(() => {
+            hint.classList.add('show');
+        }, 1000);
+        
+        // Hide hint after 5 seconds
+        setTimeout(() => {
+            hint.classList.remove('show');
+        }, 6000);
+    });
+    
+    function downloadPDF() {
+        const element = document.body;
+        const opt = {
+            margin: 0.25,
+            filename: 'Naman_Sharma_Resume_Final.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2,
+                useCORS: true,
+                letterRendering: true,
+                height: window.innerHeight,
+                width: window.innerWidth
+            },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'a4', 
+                orientation: 'portrait' 
+            }
+        };
+        
+        const btn = document.querySelector('.download-btn');
+        btn.style.opacity = '0.5';
+        
+        html2pdf().set(opt).from(element).save().then(() => {
+            btn.style.opacity = '1';
+        });
+    }
+    </script>    
 </body>
 </html>
