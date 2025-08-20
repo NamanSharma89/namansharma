@@ -15,6 +15,8 @@
             color: #000000;
             max-width: 8.5in;
             margin: 0 auto;
+            word-spacing: -0.5px;
+            letter-spacing: -0.2px;
         }
         
         .container {
@@ -200,6 +202,8 @@
             font-size: 9pt;
             break-inside: avoid;
             page-break-inside: avoid;
+            word-spacing: -0.4px;
+            letter-spacing: -0.1px;
         }
         
         .bullet-point:before {
@@ -254,12 +258,38 @@
         }
         
         .cert-link:after {
-            content: " 📎";
+            content: " 🔍";
             margin-left: 3px;
         }
         
-        /* Download Button - Hidden by default */
-        .download-btn {
+        /* GitHub Projects Section */
+        .project-item {
+            margin-bottom: 6px;
+            font-size: 9pt;
+        }
+        
+        .project-name {
+            font-weight: bold;
+        }
+        
+        .project-link {
+            color: #000000;
+            text-decoration: none;
+            font-size: 8pt;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        .project-description {
+            font-size: 8pt;
+            margin-top: 1px;
+            line-height: 1.1;
+        }
+        
+        /* Print Button - Hidden by default */
+        .print-btn {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -272,17 +302,17 @@
             font-size: 12px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 1000;
-            display: none; /* Hidden by default */
+            display: none;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .download-btn.visible {
+        .print-btn.visible {
             display: block;
             opacity: 1;
         }
 
-        .download-btn:hover {
+        .print-btn:hover {
             background-color: #0056b3;
         }
 
@@ -306,10 +336,11 @@
         }
 
         @media print {
-            .download-btn {
+
+            .print-btn {
                 display: none !important;
             }
-            
+
             .shortcut-hint {
                 display: none !important;
             }
@@ -345,33 +376,37 @@
             /* Specific break controls for better distribution */
             .fiserv-earlier-roles {
                 break-before: page;
-                page-break-before: always;
+                page-break-before: avoid;
             }
             
             /* Print links styling */
             .cert-link {
                 color: #000000;
             }
+            
+            .project-link {
+                color: #000000;
+            }
         }
     </style>
 </head>
 <body>
-    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
-    <div class="shortcut-hint" id="shortcut-hint">Press Ctrl+D to show/hide download button</div>
+    <button class="print-btn" onclick="printResume()">Print Resume</button>
+    <div class="shortcut-hint" id="shortcut-hint">Press Ctrl+D to show/hide print button</div>
     
     <div class="container">
         <!-- Header Section - Full Width -->
         <div class="header">
             <div class="name">Naman Sharma</div>
-            <div class="headline">AI Solutions Engineering</div>
-            <div class="contact-info">Gurugram, India | 7767924684 | naman.sharma89@gmail.com | <a href="https://www.linkedin.com/in/naman-sharma-7b4b3661/" target="_blank">LinkedIn</a></div>
+            <div class="headline">Solutions Architect</div>
+            <div class="contact-info">Gurugram, India | 7767924684 | naman.sharma89@gmail.com | <a href="https://www.linkedin.com/in/naman-sharma-7b4b3661/" target="_blank">LinkedIn</a> | <a href="https://github.com/NamanSharma89" target="_blank">GitHub</a></div>
         </div>
 
         <!-- Professional Summary - Full Width -->
         <div class="summary-section">
             <div class="section-title">Summary</div>
             <div class="summary-content">
-                Results-driven AI Solutions Engineer with 12+ years of experience designing and implementing enterprise-grade software solutions. Proven expertise in AI integration, cloud architecture (AWS), and modern development frameworks including Spring Boot, React, and Node.js. AWS Certified AI Practitioner with extensive experience in LLM integration, microservices architecture, and DevSecOps practices. Demonstrated success in leading cross-functional teams, managing complex migrations, and delivering scalable solutions that drive business value.
+                Solutions Architect with 12+ years of enterprise software engineering expertise, specializing in AI-assisted development and velocity-focused engineering. Proven track record in designing and scaling distributed systems, microservices architectures, and cloud infrastructure. Expert in building robust APIs, implementing DevSecOps practices, and leading database migrations. AWS Certified AI Practitioner with deep expertise in backend system design, container orchestration, and infrastructure automation. Combines traditional backend engineering excellence with modern AI-powered development tools to deliver production-ready solutions rapidly while maintaining enterprise-grade security and scalability standards.
             </div>
         </div>
 
@@ -381,38 +416,40 @@
             <div class="left-column">
                 <div class="section-title">Experience</div>
                 
-                <!-- Current Role -->
-                <div class="job-entry no-break">
-                    <div class="job-header">
-                        <span class="company">Technical Consultant</span> | <span class="location">Gurugram</span>
-                    </div>
-                    <div class="job-title-line">
-                        <span class="job-title">AI Solutions Engineering</span><br>
-                        <span class="job-dates">November 2024 - Present</span>
-                    </div>
-                    
-                    <div class="job-content">
-                        <div class="bullet-point">Currently building a scalable user authentication system leveraging AWS Cognito Identity Provider with Spring Security OAuth2 Resource Server, implementing environment-specific credential management, dynamic configuration, and comprehensive error handling for seamless development-to-production workflows.</div>
-                        
-                        <div class="bullet-point">Developing enterprise-grade user registration platform with AWS Cognito integration, featuring automated lifecycle management, RBAC, and robust validation pipelines</div>
-                        
-                        <div class="bullet-point">Delivered end-to-end AI solutions for EdTech and industrial analytics clients, combining full-stack engineering with LLM-driven innovation</div>
-                        
-                        <div class="bullet-point">Built AI-powered quiz assistant with dynamic question generation and progressive hinting. Developed React frontend with glassmorphism UI and Node.js/Express microservices backend</div>
-                        
-                        <div class="bullet-point">Integrated model-agnostic LLM support (OpenAI, Anthropic, Ollama) via unified API layer for flexible local/cloud deployment while maintaining high performance and cost efficiency</div>
-                        
-                        <div class="bullet-point">Designed context-aware validation mechanisms preventing AI leakage, ensuring educational integrity and adaptive learning quality</div>
-                        
-                        <div class="bullet-point">Developed secure text-to-SQL engine translating natural language to optimized PostgreSQL using AWS Bedrock (Claude) and Ollama, achieving 95%+ accuracy</div>
-                        
-                        <div class="bullet-point">Engineered data pipelines processing 100K+ industrial records using Polars, with automated ETL, real-time sanitization, 99.9% validation accuracy, and full lineage tracking</div>
-                        
-                        <div class="bullet-point">Delivered DPDP-compliant FastAPI services with structured logging, automated migrations, reducing data analysis time by 90%</div>
-                        
-                        <div class="bullet-point">Architected scalable AWS infrastructure (S3, Aurora, Lambda, Redis) with CI/CD pipelines supporting 1000+ concurrent users and sub-500ms latencies</div>
-                    </div>
+            <!-- Current Role -->
+            <div class="job-entry no-break">
+                <div class="job-header">
+                    <span class="company">Memritech</span> | <span class="location">Gurugram</span>
                 </div>
+                <div class="job-title-line">
+                    <span class="job-title">Solutions Architect</span><br>
+                    <span class="job-dates">November 2024 - Present</span>
+                </div>
+                
+                <div class="job-content">
+                    <div class="bullet-point">Adopted AI-assisted coding principles and velocity-focused engineering methodologies, leveraging tools like Claude Code and GitHub Copilot to consistently deliver scalable backend applications under accelerated timelines while maintaining enterprise-grade quality standards</div>
+                    
+                    <div class="bullet-point">Architected and deployed enterprise-grade authentication system using AWS Cognito with Spring Security OAuth2 Resource Server, delivering production-ready backend solution in 3 weeks through iterative development and microservices architecture</div>
+                    
+                    <div class="bullet-point">Built production-ready user management backend with AWS Cognito integration, featuring automated lifecycle management, RBAC implementation, and robust validation pipelines with Redis caching layer</div>
+                    
+                    <div class="bullet-point">Delivered multiple end-to-end backend solutions for EdTech and industrial analytics clients, combining agile API development with AI-powered development acceleration and continuous deployment practices</div>
+                    
+                    <div class="bullet-point">Rapid-developed AI-powered backend services from concept to production in 2 weeks, featuring Node.js/Express microservices architecture with Redis caching and PostgreSQL data persistence</div>
+                    
+                    <div class="bullet-point">Architected model-agnostic LLM integration backend supporting OpenAI, Anthropic, and Ollama via unified REST API layer, enabling flexible local/cloud deployment with high-performance caching and cost optimization</div>
+                    
+                    <div class="bullet-point">Designed and implemented context-aware validation microservices with distributed caching, preventing data leakage while ensuring system integrity through comprehensive API testing and monitoring</div>
+                    
+                    <div class="bullet-point">Engineered secure text-to-SQL backend engine using AWS Bedrock (Claude) and Ollama, translating natural language to optimized PostgreSQL queries with 95%+ accuracy through sophisticated query validation and sanitization</div>
+                    
+                    <div class="bullet-point">Built high-performance data processing pipelines handling 100K+ records using Python Polars and FastAPI, implementing automated ETL workflows, real-time data sanitization, and 99.9% validation accuracy</div>
+                    
+                    <div class="bullet-point">Delivered DPDP-compliant backend services with structured logging, automated database migrations, and comprehensive API documentation, reducing data processing time by 90% through optimized database queries and caching strategies</div>
+                    
+                    <div class="bullet-point">Architected and deployed scalable AWS cloud infrastructure (S3, Aurora PostgreSQL, Lambda, Redis ElastiCache) with Infrastructure as Code using Terraform, supporting 1000+ concurrent users with sub-500ms API response times</div>
+                </div>
+            </div>
 
                 <!-- Fiserv Role - Tech Lead Responsibilities -->
                 <div class="job-entry no-break">
@@ -420,44 +457,46 @@
                         <span class="company">Fiserv</span> | <span class="location">Gurugram & Pune</span>
                     </div>
                     <div class="job-title-line">
-                        <span class="job-title">Tech Lead</span><br>
+                        <span class="job-title">Backend Tech Lead</span><br>
                         <span class="job-dates">October 2015 - November 2024</span>
                     </div>
                     
                     <div class="job-content">
-                        <div class="sub-role">Career Progression: Application Developer → Tech Lead</div>
+                        <div class="sub-role">Career Progression: Backend Developer → Senior Backend Engineer → Tech Lead</div>
                         
-                        <div class="sub-role">Tech Lead Responsibilities (2020–2024)</div>
+                        <div class="sub-role">Backend Tech Lead Responsibilities (2020–2024)</div>
                         
-                        <div class="bullet-point">Architected adapter layer APIs using DDD and Hexagonal Architecture to integrate legacy systems with enterprise platform, enabling real-time fraud detection and reducing response times from 2+ weeks to real-time</div>
+                        <div class="bullet-point">Architected adapter layer APIs using Domain-Driven Design and Hexagonal Architecture to integrate legacy mainframe systems with modern enterprise platform, enabling real-time fraud detection with sub-second response times</div>
                         
-                        <div class="bullet-point">Led Java platform migrations (JDK 8 to 17), improving system performance, scalability, and maintainability</div>
+                        <div class="bullet-point">Led Java platform migrations (JDK 8 to 17) and Spring Boot upgrades across multiple microservices, improving system performance by 40% and enhancing maintainability with modern JVM features</div>
                         
-                        <div class="bullet-point">Served as Security Champion, coordinating teams to address critical vulnerabilities like Log4j, reducing exposure time to under 24 hours</div>
+                        <div class="bullet-point">Served as Security Champion, implementing DevSecOps practices and coordinating backend teams to address critical vulnerabilities like Log4j, achieving resolution within 24 hours across 50+ services</div>
                         
-                        <div class="bullet-point">Engineered CI/CD pipelines with automated vulnerability tracking, reducing deployment times from days to hours and mitigating thousands of vulnerabilities</div>
+                        <div class="bullet-point">Engineered comprehensive CI/CD pipelines with automated security scanning (Fortify, SonarQube), reducing deployment times from days to hours while maintaining zero security incidents</div>
                         
-                        <div class="bullet-point">Spearheaded Oracle-to-PostgreSQL and AWS migrations, delivering substantial performance and reliability improvements</div>
+                        <div class="bullet-point">Spearheaded Oracle-to-PostgreSQL migration for 15+ backend services, implementing dual-DAO architecture for seamless transition and achieving 60% cost reduction with improved performance</div>
                         
-                        <div class="bullet-point">Championed Agile (SAFe) transformations, boosting team productivity by 32% while ensuring security standard adherence</div>
+                        <div class="bullet-point">Led AWS cloud migration initiative, designing containerized backend services with Docker and Kubernetes, resulting in 50% infrastructure cost reduction and improved scalability</div>
                         
-                        <div class="bullet-point">Mentored engineering teams of 8-12 developers, driving daily stand-ups, code reviews, and best practices adoption</div>
+                        <div class="bullet-point">Championed Agile (SAFe) transformations and backend development best practices, boosting team productivity by 32% while ensuring security and compliance adherence</div>
+                        
+                        <div class="bullet-point">Mentored backend engineering teams of 8-12 developers, conducting code reviews, API design sessions, and database optimization workshops</div>
                     </div>
                 </div>
 
-                <!-- Earlier Developer Roles - Force to new page for better distribution -->
+                <!-- Earlier Developer Roles -->
                 <div class="fiserv-earlier-roles">
-                    <div class="sub-role">Earlier Developer Roles (2015–2019)</div>
+                    <div class="sub-role">Backend Developer Roles (2015–2019)</div>
                     
-                    <div class="bullet-point">Developed adapter modules for MasterCard/Visa API integrations with dynamic transformations and plug-in/out capabilities</div>
+                    <div class="bullet-point">Developed backend adapter modules for MasterCard/Visa API integrations with dynamic XML/JSON transformations and plug-in/out capabilities using Spring Integration framework</div>
                     
-                    <div class="bullet-point">Designed dual-DAO layers for seamless database transitions, dynamically selecting libraries at runtime</div>
+                    <div class="bullet-point">Designed dual-DAO layers supporting Oracle and PostgreSQL backends, dynamically selecting database libraries at runtime for seamless database transitions</div>
                     
-                    <div class="bullet-point">Improved application performance by 53%, reducing page load times from 3.2s to 1.5s and increasing user satisfaction by 47%</div>
+                    <div class="bullet-point">Optimized backend application performance by 53%, reducing API response times from 3.2s to 1.5s through database query optimization, connection pooling, and Redis caching implementation</div>
                     
-                    <div class="bullet-point">Embedded security in CI/CD through DevSecOps, integrating Fortify, WebInspect, and SonarQube scanning</div>
+                    <div class="bullet-point">Implemented comprehensive security scanning in CI/CD pipelines through DevSecOps practices, integrating Fortify SAST, WebInspect DAST, and SonarQube code quality analysis</div>
                     
-                    <div class="bullet-point">Led security remediation initiative addressing 11,000+ vulnerabilities, achieving 98% reduction in critical/high issues and formal compliance certification</div>
+                    <div class="bullet-point">Led backend security remediation initiative addressing 11,000+ vulnerabilities across microservices portfolio, achieving 98% reduction in critical/high-severity issues</div>
                 </div>
 
                 <!-- Infosys Role -->
@@ -466,77 +505,107 @@
                         <span class="company">Infosys Limited</span> | <span class="location">Pune</span>
                     </div>
                     <div class="job-title-line">
-                        <span class="job-title">Senior Systems Engineer</span><br>
+                        <span class="job-title">Senior Backend Systems Engineer</span><br>
                         <span class="job-dates">August 2012 - October 2015</span>
                     </div>
                     
                     <div class="job-content">
-                        <div class="sub-role">Progression: Systems Engineer → Senior Systems Engineer</div>
+                        <div class="sub-role">Progression: Backend Systems Engineer → Senior Backend Systems Engineer</div>
                         
-                        <div class="bullet-point">Developed services for mainframe data integration using Spring Integration framework</div>
+                        <div class="bullet-point">Developed backend integration services for mainframe data processing using Spring Integration framework with JMS messaging and database connectivity</div>
                         
-                        <div class="bullet-point">Implemented reporting solutions using Apache Chemistry for real-time business intelligence</div>
+                        <div class="bullet-point">Implemented backend reporting solutions using Apache Chemistry OpenCMIS for real-time business intelligence with PostgreSQL and Oracle backends</div>
                         
-                        <div class="bullet-point">Created Spring Batch jobs for overnight ETL processing from Mainframe to database systems</div>
+                        <div class="bullet-point">Created Spring Batch jobs for high-volume overnight ETL processing, migrating 1M+ records daily from Mainframe systems to relational databases</div>
                         
-                        <div class="bullet-point">Implemented quality tools (Checkstyle, PMD, SonarQube) establishing code quality standards</div>
+                        <div class="bullet-point">Implemented backend quality assurance tools (Checkstyle, PMD, SonarQube) establishing coding standards and automated quality gates in CI/CD pipelines</div>
                         
-                        <div class="bullet-point">Designed POM structures and simplified workspace setup, reducing developer onboarding time</div>
+                        <div class="bullet-point">Designed Maven POM structures and simplified development workspace setup, reducing developer onboarding time by 70% for backend development teams</div>
                         
-                        <div class="bullet-point">Maintained coding standards using Confluence and Jira, conducted peer reviews and integration testing</div>
+                        <div class="bullet-point">Maintained backend coding standards documentation using Confluence, conducted peer code reviews, and managed integration testing across distributed systems</div>
                         
-                        <div class="bullet-point">Managed delivery processes and UAT issue resolution ensuring successful project deployment</div>
+                        <div class="bullet-point">Managed backend service delivery processes and UAT issue resolution, ensuring successful deployment of critical financial services applications</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column - Skills, Certifications and Education -->
+            <!-- Right Column - Skills, Projects, Certifications and Education -->
             <div class="right-column">
                 <!-- Core Competencies -->
                 <div class="section-title">Core Competencies</div>
                 <div class="competencies-list">
-                    <div class="competency-item">• Artificial Intelligence (AI) & Machine Learning</div>
-                    <div class="competency-item">• Large Language Models (LLM) Integration</div>
-                    <div class="competency-item">• AWS Cloud Architecture & Services</div>
-                    <div class="competency-item">• Microservices Architecture Design</div>
-                    <div class="competency-item">• Java Enterprise Development</div>
-                    <div class="competency-item">• Spring Boot & Spring Security</div>
-                    <div class="competency-item">• React.js & Node.js Development</div>
+                    <div class="competency-item">• AI-Assisted Development & Velocity-Focused Engineering</div>
+                    <div class="competency-item">• Distributed Systems Architecture</div>
+                    <div class="competency-item">• Microservices Design & Implementation</div>
                     <div class="competency-item">• API Development & Integration</div>
-                    <div class="competency-item">• Database Management</div>
+                    <div class="competency-item">• Infrastructure as Code (Terraform)</div>
+                    <div class="competency-item">• AWS Cloud Architecture & Services</div>
+                    <div class="competency-item">• Database Design & Optimization</div>
                     <div class="competency-item">• DevSecOps & CI/CD Implementation</div>
-                    <div class="competency-item">• System Design & Team Leadership</div>
+                    <div class="competency-item">• Performance Optimization & Monitoring</div>
+                    <div class="competency-item">• Backend System Design & Team Leadership</div>
                 </div>
 
                 <!-- Technical Skills -->
                 <div class="section-title">Technical Skills</div>
                 <div class="skills-content">
                     <div class="skill-category">
-                        <span class="skill-label">Languages:</span> Java, Python, JavaScript, SQL, Shell
+                        <span class="skill-label">Languages:</span> Java, Python, SQL, Shell, JavaScript
                     </div>
                     <div class="skill-category">
-                        <span class="skill-label">Frameworks:</span> Spring Boot, React.js, Node.js, FastAPI, Express.js
+                        <span class="skill-label">Backend Frameworks:</span> Spring Boot, Spring Security, Spring Actuators, FastAPI, psycopg2, Pandas, Polars, numpy, Pydantic, Uvicorn
                     </div>
                     <div class="skill-category">
-                        <span class="skill-label">Cloud & DevOps:</span> AWS (Cognito, Lambda, S3, Bedrock), Docker, Terraform, GitLab, Jenkins
+                        <span class="skill-label">AI Development Tools:</span> Claude Code, GitHub Copilot, Cursor IDE
                     </div>
                     <div class="skill-category">
-                        <span class="skill-label">Databases:</span> PostgreSQL, Oracle, Redis, Aurora
+                        <span class="skill-label">Cloud & DevOps:</span> AWS (Cognito, Lambda, S3, Bedrock, ECS), Docker, Kubernetes, Terraform
                     </div>
                     <div class="skill-category">
-                        <span class="skill-label">AI/ML:</span> OpenAI GPT, Anthropic Claude, Ollama, AWS SageMaker, NLP
+                        <span class="skill-label">CI/CD:</span> GitLab CI, Jenkins, GitHub Actions
                     </div>
                     <div class="skill-category">
-                        <span class="skill-label">Security:</span> OAuth 2.0, IAM, DevSecOps, Fortify, SonarQube
+                        <span class="skill-label">Databases:</span> PostgreSQL, Oracle, Redis, AWS Aurora, MongoDB
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Monitoring:</span> CloudWatch, CloudTrail, ELK Stack, AppDynamics
+                    </div>
+                    <div class="skill-category">
+                        <span class="skill-label">Security:</span> OAuth 2.0, JWT, IAM, DevSecOps, Fortify, SonarQube
                     </div>
                 </div>
 
                 <!-- Certifications -->
                 <div class="section-title">Certifications</div>
                 <div class="skills-content">
-                    <div class="cert-item">• <a href="https://www.credly.com/badges/your-aws-ai-practitioner-badge" target="_blank" class="cert-link">AWS Certified AI Practitioner</a></div>
-                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/your-deeplearning-ai-llm-certificate" target="_blank" class="cert-link">DeepLearning.AI Generative AI with Large Language Models</a></div>
-                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/your-deeplearning-ai-software-dev-certificate" target="_blank" class="cert-link">DeepLearning.AI Generative AI for Software Development</a></div>
+                    <div class="cert-item">• <a href="https://www.credly.com/badges/819e5db5-9415-4ad7-8215-5338c099e8d2/linked_in_profile" target="_blank" class="cert-link">AWS Certified AI Practitioner</a></div>
+                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/verify/3C0UDJ45PVWD" target="_blank" class="cert-link">DeepLearning.AI Generative AI with LLMs</a></div>
+                    <div class="cert-item">• <a href="https://www.coursera.org/account/accomplishments/specialization/2RTYEA921U1R" target="_blank" class="cert-link">DeepLearning.AI Generative AI for Software Development</a></div>
+                </div>
+
+                <!-- GitHub Projects -->
+                <div class="section-title">GitHub Projects</div>
+                <div class="skills-content">
+                    <div class="project-item">
+                        <div class="project-name">Protomil</div>
+                        <div class="project-link"><a href="https://github.com/NamanSharma89/protomil/" target="_blank">github.com/NamanSharma89/protomil</a></div>
+                        <div class="project-description">Protomil Core is a comprehensive Manufacturing Execution System (MES) built with Spring Boot 3.5.3, designed to streamline manufacturing operations through advanced user management, job card workflows, equipment tracking, and personnel coordination.</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Hospital Data Chatbot (Text-to-SQL Implementation)</div>
+                        <div class="project-link"><a href="https://github.com/NamanSharma89/proto_v1/tree/main/hospital-data-chatbot" target="_blank">github.com/NamanSharma89/proto_v1/</a></div>
+                        <div class="project-description">FastAPI service converting natural language to PostgreSQL queries using LLM integration. Includes query validation, sanitization, and performance monitoring. Python-based ETL system using Polars for processing 100K+ records with real-time validation, error handling, and automated data quality checks.</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Hospital Insights</div>
+                        <div class="project-link"><a href="https://github.com/NamanSharma89/HospitalInsights/blob/main/replit.md" target="_blank">github.com/NamanSharma89/HospitalInsights/</a></div>
+                        <div class="project-description">A Streamlit-based hospital data analytics dashboard that processes Excel files containing patient and diagnosis information. The application provides interactive visualizations and data analysis capabilities for healthcare data management and insights.</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Github-to-Text</div>
+                        <div class="project-link"><a href="https://github.com/NamanSharma89/github_to_text" target="_blank">github.com/NamanSharma89/github_to_text</a></div>
+                        <div class="project-description">A powerful Python script that converts GitHub repositories to single text files optimized for Large Language Model (LLM) ingestion. This tool significantly reduces token usage while maintaining code readability and context.</div>
+                    </div>
                 </div>
 
                 <!-- Education -->
@@ -555,81 +624,56 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.js/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-    let isButtonVisible = false;
-    
-    // Keyboard event listener
-    document.addEventListener('keydown', function(event) {
-        // Check for Ctrl+D (or Cmd+D on Mac)
-        if ((event.ctrlKey || event.metaKey) && event.key === 'd') {
-            event.preventDefault(); // Prevent default browser bookmark action
-            toggleDownloadButton();
-        }
-        
-        // Alternative: Press 'P' key for PDF
-        if (event.key === 'p' || event.key === 'P') {
-            if (!event.ctrlKey && !event.metaKey) { // Don't interfere with Ctrl+P print
-                event.preventDefault();
-                toggleDownloadButton();
-            }
-        }
-    });
-    
-    function toggleDownloadButton() {
-        const btn = document.querySelector('.download-btn');
-        const hint = document.getElementById('shortcut-hint');
-        
-        isButtonVisible = !isButtonVisible;
-        
-        if (isButtonVisible) {
-            btn.classList.add('visible');
-            hint.classList.remove('show');
-        } else {
-            btn.classList.remove('visible');
-        }
-    }
-    
-    // Show hint on page load
-    window.addEventListener('load', function() {
-        const hint = document.getElementById('shortcut-hint');
-        setTimeout(() => {
-            hint.classList.add('show');
-        }, 1000);
-        
-        // Hide hint after 5 seconds
-        setTimeout(() => {
-            hint.classList.remove('show');
-        }, 6000);
-    });
-    
-    function downloadPDF() {
-        const element = document.body;
-        const opt = {
-            margin: 0.25,
-            filename: 'Naman_Sharma_Resume_Final.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2,
-                useCORS: true,
-                letterRendering: true,
-                height: window.innerHeight,
-                width: window.innerWidth
-            },
-            jsPDF: { 
-                unit: 'in', 
-                format: 'a4', 
-                orientation: 'portrait' 
-            }
-        };
-        
-        const btn = document.querySelector('.download-btn');
-        btn.style.opacity = '0.5';
-        
-        html2pdf().set(opt).from(element).save().then(() => {
-            btn.style.opacity = '1';
+        let isButtonVisible = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Keyboard event listener
+            document.addEventListener('keydown', function(event) {
+                // Check for Ctrl+D (or Cmd+D on Mac)
+                if ((event.ctrlKey || event.metaKey) && event.key === 'd') {
+                    event.preventDefault(); // Prevent default browser bookmark action
+                    togglePrintButton();
+                }
+                
+                // Alternative: Press 'P' key for Print
+                if (event.key === 'p' || event.key === 'P') {
+                    if (!event.ctrlKey && !event.metaKey) { // Don't interfere with Ctrl+P print
+                        event.preventDefault();
+                        togglePrintButton();
+                    }
+                }
+            });
+            
+            // Show hint on page load
+            const hint = document.getElementById('shortcut-hint');
+            setTimeout(() => {
+                hint.classList.add('show');
+            }, 1000);
+            
+            // Hide hint after 5 seconds
+            setTimeout(() => {
+                hint.classList.remove('show');
+            }, 6000);
         });
-    }
-    </script>    
-</body>
+
+        function togglePrintButton() {
+            const btn = document.querySelector('.print-btn');
+            const hint = document.getElementById('shortcut-hint');
+            
+            isButtonVisible = !isButtonVisible;
+            
+            if (isButtonVisible) {
+                btn.classList.add('visible');
+                hint.classList.remove('show');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }
+
+        function printResume() {
+            window.print();
+        }
+    </script> 
+    </body>
 </html>
